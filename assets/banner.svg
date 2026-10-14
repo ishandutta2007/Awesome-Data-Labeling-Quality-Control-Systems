@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f1d" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#050811" />
+    </linearGradient>
+
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#818cf8" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(30, 41, 59, 0.7)" />
+      <stop offset="100%" stop-color="rgba(15, 23, 42, 0.85)" />
+    </linearGradient>
+
+    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#a855f7" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Filters -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <style>
+      .glow-orb {
+        animation: floatOrb 8s ease-in-out infinite alternate;
+      }
+      .pulse-flow {
+        stroke-dasharray: 8 12;
+        animation: flowDash 20s linear infinite;
+      }
+      .pill-anim {
+        animation: pulsePill 4s ease-in-out infinite alternate;
+      }
+      .node-pulse {
+        animation: pulseDot 3s ease-in-out infinite alternate;
+      }
+      @keyframes floatOrb {
+        0% { transform: translate(0px, 0px) scale(1); }
+        100% { transform: translate(40px, -20px) scale(1.15); }
+      }
+      @keyframes flowDash {
+        to { stroke-dashoffset: -1000; }
+      }
+      @keyframes pulsePill {
+        0% { opacity: 0.85; transform: translateY(0px); }
+        100% { opacity: 1; transform: translateY(-4px); }
+      }
+      @keyframes pulseDot {
+        0% { r: 4px; opacity: 0.6; }
+        100% { r: 6.5px; opacity: 1; }
+      }
+      .title-text {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        font-weight: 800;
+        font-size: 38px;
+        letter-spacing: -0.5px;
+      }
+      .subtitle-text {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        letter-spacing: 0.2px;
+      }
+      .badge-text {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        font-weight: 600;
+        font-size: 12px;
+      }
+    </style>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1200" height="360" rx="16" fill="url(#bgGrad)" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Dynamic Glowing Orbs in Background -->
+  <g class="glow-orb" opacity="0.6">
+    <circle cx="150" cy="80" r="140" fill="url(#glowGrad)" filter="url(#glow)" />
+    <circle cx="1050" cy="280" r="160" fill="url(#glowGrad)" filter="url(#glow)" />
+  </g>
+
+  <!-- Ambient Grid Pattern -->
+  <g opacity="0.12" stroke="#64748b" stroke-width="1">
+    <path d="M 0 60 L 1200 60 M 0 120 L 1200 120 M 0 180 L 1200 180 M 0 240 L 1200 240 M 0 300 L 1200 300" />
+    <path d="M 150 0 L 150 360 M 300 0 L 300 360 M 450 0 L 450 360 M 600 0 L 600 360 M 750 0 L 750 360 M 900 0 L 900 360 M 1050 0 L 1050 360" />
+  </g>
+
+  <!-- Dynamic Animated Flow Streams (Background Layer) -->
+  <g opacity="0.45" fill="none">
+    <path class="pulse-flow" d="M -50 100 Q 300 40, 600 140 T 1250 80" stroke="#38bdf8" stroke-width="2.5" />
+    <path class="pulse-flow" d="M -50 280 Q 350 340, 700 230 T 1250 290" stroke="#a855f7" stroke-width="2.5" style="animation-duration: 26s;" />
+    <path class="pulse-flow" d="M -50 200 Q 400 130, 800 240 T 1250 170" stroke="#6366f1" stroke-width="1.8" style="animation-duration: 18s;" />
+  </g>
+
+  <!-- Animated Data Nodes -->
+  <g fill="#38bdf8">
+    <circle class="node-pulse" cx="280" cy="78" r="5" />
+    <circle class="node-pulse" cx="620" cy="144" r="5" style="animation-delay: 1s;" />
+    <circle class="node-pulse" cx="930" cy="98" r="5" style="animation-delay: 2s;" fill="#c084fc" />
+    <circle class="node-pulse" cx="420" cy="275" r="5" style="animation-delay: 1.5s;" fill="#818cf8" />
+    <circle class="node-pulse" cx="820" cy="235" r="5" style="animation-delay: 0.5s;" fill="#38bdf8" />
+  </g>
+
+  <!-- Foreground Content Container (Keeps text in front, crisp, and high contrast) -->
+  <g transform="translate(60, 45)">
+    <!-- Category Mini-Tag -->
+    <g class="pill-anim">
+      <rect x="0" y="0" width="220" height="28" rx="14" fill="rgba(56, 189, 248, 0.15)" stroke="#38bdf8" stroke-width="1.2"/>
+      <circle cx="16" cy="14" r="4" fill="#38bdf8" />
+      <text x="28" y="18" fill="#38bdf8" class="badge-text">DATA QUALITY &amp; VALIDATION</text>
+    </g>
+
+    <!-- Main Title with Gradient Fill -->
+    <text x="0" y="78" fill="url(#accentGrad)" class="title-text" filter="url(#glow)">Awesome Data Labeling</text>
+    <text x="0" y="122" fill="#ffffff" class="title-text">Quality Control Systems</text>
+
+    <!-- Subtitle -->
+    <text x="0" y="162" fill="#94a3b8" class="subtitle-text">
+      Curated ecosystem of SaaS &amp; Open-Source platforms for Inter-Annotator Agreement (IAA),
+    </text>
+    <text x="0" y="186" fill="#cbd5e1" class="subtitle-text">
+      confident learning label error detection, weak supervision, and HITL dataset validation.
+    </text>
+
+    <!-- Feature Pill Badges -->
+    <g transform="translate(0, 218)">
+      <!-- Pill 1: Krippendorff & Kappa -->
+      <g class="pill-anim" style="animation-delay: 0.2s;">
+        <rect x="0" y="0" width="168" height="32" rx="16" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.2"/>
+        <text x="14" y="20" fill="#38bdf8" class="badge-text">📐 Krippendorff's α &amp; κ</text>
+      </g>
+      <!-- Pill 2: Label Noise Detection -->
+      <g class="pill-anim" style="animation-delay: 0.5s;" transform="translate(180, 0)">
+        <rect x="0" y="0" width="180" height="32" rx="16" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.2"/>
+        <text x="14" y="20" fill="#a78bfa" class="badge-text">🔍 Label Error Detection</text>
+      </g>
+      <!-- Pill 3: Weak Supervision -->
+      <g class="pill-anim" style="animation-delay: 0.8s;" transform="translate(372, 0)">
+        <rect x="0" y="0" width="160" height="32" rx="16" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.2"/>
+        <text x="14" y="20" fill="#34d399" class="badge-text">⚡ Weak Supervision</text>
+      </g>
+      <!-- Pill 4: Multimodal QA -->
+      <g class="pill-anim" style="animation-delay: 1.1s;" transform="translate(544, 0)">
+        <rect x="0" y="0" width="154" height="32" rx="16" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.2"/>
+        <text x="14" y="20" fill="#f472b6" class="badge-text">🎯 Multimodal &amp; 3D QA</text>
+      </g>
+    </g>
+  </g>
+</svg>
